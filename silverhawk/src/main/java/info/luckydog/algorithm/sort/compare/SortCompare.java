@@ -55,8 +55,15 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-        String alg1 = "Insertion";
-        String alg2 = "Selection";
+//        String alg1 = "Insertion";
+//        String alg2 = "Selection";
+
+        String alg1 = "Shell";
+        String alg2 = "Insertion";
+
+//        String alg1 = "Heap";
+//        String alg2 = "Merge";
+//        String alg1 = "Quick";
         int n = 1000;
         int t = 1000;
         double t1 = timeRandomInput(alg1, n, t);

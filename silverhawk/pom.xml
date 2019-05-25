@@ -11,5 +11,12 @@
 
     <artifactId>silver-hawk</artifactId>
 
-
+    <dependencies>
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/edu.princeton.cs/algs4 &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>edu.princeton.cs</groupId>-->
+            <!--<artifactId>algs4</artifactId>-->
+            <!--<version>1.0.3</version>-->
+        <!--</dependency>-->
+    </dependencies>
 </project>
