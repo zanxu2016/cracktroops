@@ -22,7 +22,7 @@ public abstract class AbstractSort implements Sort {
         return v.compareTo(w) < 0;
     }
 
-    public void exch(Comparable[] a, int i, int j) {
+    public void exchange(Comparable[] a, int i, int j) {
         exchCount++;
         Comparable t = a[i];
         a[i] = a[j];
@@ -45,7 +45,7 @@ public abstract class AbstractSort implements Sort {
         return true;
     }
 
-    public int getExchCount() {
+    public int getExchangeCount() {
         return exchCount;
     }
 

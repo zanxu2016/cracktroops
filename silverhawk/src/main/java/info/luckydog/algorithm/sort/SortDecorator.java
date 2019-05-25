@@ -8,9 +8,9 @@ package info.luckydog.algorithm.sort;
  */
 public class SortDecorator extends AbstractSort {
 
-    private Sort sort;
+    private AbstractSort sort;
 
-    public SortDecorator(Sort sort) {
+    public SortDecorator(AbstractSort sort) {
         this.sort = sort;
     }
 
@@ -21,7 +21,7 @@ public class SortDecorator extends AbstractSort {
 
         sort.sort(a);
 
-        System.out.println("exchCount : " + sort.getExchCount());
+        System.out.println("exchangeCount : " + sort.getExchangeCount());
         System.out.println("compareCount : " + sort.getCompareCount());
         sort.show(a);
         System.out.println("Is sorted? " + sort.isSorted(a));

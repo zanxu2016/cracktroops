@@ -1,7 +1,7 @@
 package info.luckydog.algorithm.sort;
 
-import info.luckydog.algorithm.sort.impl.InsertSort;
-import info.luckydog.algorithm.sort.impl.SelectSort;
+import info.luckydog.algorithm.sort.impl.InsertionSort;
+import info.luckydog.algorithm.sort.impl.SelectionSort;
 import org.junit.Test;
 
 /**
@@ -18,13 +18,13 @@ public class SortClient {
 
     @Test
     public void testSelectSort() {
-        sortDecorator = new SortDecorator(new SelectSort());
+        sortDecorator = new SortDecorator(new SelectionSort());
         sortDecorator.sort(a);
     }
 
     @Test
     public void testInsertSort() {
-        sortDecorator = new SortDecorator(new InsertSort());
+        sortDecorator = new SortDecorator(new InsertionSort());
         sortDecorator.sort(a);
     }
 

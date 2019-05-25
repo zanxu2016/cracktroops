@@ -17,7 +17,7 @@ import info.luckydog.algorithm.sort.AbstractSort;
  * @author eric
  * @since 2019/05/24
  */
-public class SelectSort extends AbstractSort {
+public class SelectionSort extends AbstractSort {
 
     @Override
     public void sort(Comparable[] a) {
@@ -31,15 +31,7 @@ public class SelectSort extends AbstractSort {
                     min = j;// 找最小元素索引
                 }
             }
-            exch(a, i, min);// 交换
+            exchange(a, i, min);// 交换
         }
-    }
-
-    public static void main(String[] args) {
-        Integer[] a = {2, 3, 5, 1, 6, 9, 7, 8, 4};
-        SelectSort sort = new SelectSort();
-        sort.sort(a);
-        System.out.println(sort.getCompareCount());
-        System.out.println(sort.getExchCount());
     }
 }

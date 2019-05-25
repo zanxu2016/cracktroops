@@ -12,17 +12,9 @@ public interface Sort {
 
     boolean less(Comparable v, Comparable w);
 
-    void exch(Comparable[] a, int i, int j);
+    void exchange(Comparable[] a, int i, int j);
 
     void show(Comparable[] a);
 
     boolean isSorted(Comparable[] a);
-
-    int getExchCount();
-
-    void setExchCount(int exchCount);
-
-    int getCompareCount();
-
-    void setCompareCount(int compareCount);
 }

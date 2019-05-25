@@ -1,4 +1,11 @@
 package info.luckydog.algorithm.sort.impl;
 
-public class MergeSort {
+import info.luckydog.algorithm.sort.AbstractSort;
+
+public class MergeSort extends AbstractSort {
+
+    @Override
+    public void sort(Comparable[] a) {
+
+    }
 }
