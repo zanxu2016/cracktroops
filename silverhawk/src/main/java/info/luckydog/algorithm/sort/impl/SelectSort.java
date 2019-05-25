@@ -1,4 +1,6 @@
-package info.luckydog.algorithm.sort;
+package info.luckydog.algorithm.sort.impl;
+
+import info.luckydog.algorithm.sort.AbstractSort;
 
 /**
  * 选择排序
@@ -15,8 +17,9 @@ package info.luckydog.algorithm.sort;
  * @author eric
  * @since 2019/05/24
  */
-public class SelectSort implements Sort {
+public class SelectSort extends AbstractSort {
 
+    @Override
     public void sort(Comparable[] a) {
         // 将 a[] 按升序排列
         int n = a.length;// 数组长度
@@ -25,17 +28,18 @@ public class SelectSort implements Sort {
             int min = i;// 最小元素的索引
             for (int j = i + 1; j < n; j++) {
                 if (less(a[j], a[min])) {
-                    min = j;
+                    min = j;// 找最小元素索引
                 }
             }
-            exch(a, i, min);
+            exch(a, i, min);// 交换
         }
-        show(a);
-        System.out.println("Is sorted? " + isSorted(a));
     }
 
     public static void main(String[] args) {
         Integer[] a = {2, 3, 5, 1, 6, 9, 7, 8, 4};
-        new SelectSort().sort(a);
+        SelectSort sort = new SelectSort();
+        sort.sort(a);
+        System.out.println(sort.getCompareCount());
+        System.out.println(sort.getExchCount());
     }
 }

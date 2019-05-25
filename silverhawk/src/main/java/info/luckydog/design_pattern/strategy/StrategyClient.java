@@ -2,6 +2,8 @@ package info.luckydog.design_pattern.strategy;
 
 public class StrategyClient {
     public static void main(String[] args) {
+
+        //普通
         Validator numericValidator = new Validator(new IsNumeric());
         boolean isNumeric = numericValidator.validate("aaa");
         System.out.println(isNumeric);
@@ -34,6 +36,6 @@ public class StrategyClient {
         System.out.println(StrategyEnum.valueOf(strategyNameA).execute(a));
         System.out.println(StrategyEnum.valueOf(strategyNameB).execute(b));
 
-        System.out.println(StrategyEnum.valueOf(""));
+        System.out.println(StrategyEnum.valueOf(""));//抛异常，找不到对应策略
     }
 }
