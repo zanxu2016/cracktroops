@@ -19,6 +19,7 @@ public abstract class AbstractSort implements Sort {
 
     public boolean less(Comparable v, Comparable w) {
         compareCount++;
+        System.out.println("第 " + compareCount + " 次比较 -> " + v + " 和 " + w);
         return v.compareTo(w) < 0;
     }
 
@@ -27,6 +28,8 @@ public abstract class AbstractSort implements Sort {
         Comparable t = a[i];
         a[i] = a[j];
         a[j] = t;
+        System.out.print("更换 " + a[i] + " 和 " + a[j] + " -> ");
+        show(a);
     }
 
     public void show(Comparable[] a) {

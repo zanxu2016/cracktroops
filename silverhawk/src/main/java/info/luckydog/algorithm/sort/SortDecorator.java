@@ -18,6 +18,8 @@ public class SortDecorator extends AbstractSort {
     public void sort(Comparable[] a) {
 
         System.out.println(sort.getClass().getSimpleName() + "...");
+        System.out.print("排序前的数组--> ");
+        show(a);
 
         sort.sort(a);
 

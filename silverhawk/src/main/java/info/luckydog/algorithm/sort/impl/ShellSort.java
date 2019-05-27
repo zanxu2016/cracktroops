@@ -31,17 +31,23 @@ public class ShellSort extends AbstractSort {
         int n = a.length;
         int h = 1;
         while (h < n / 3) {
+            System.out.println("h 为 " + h);
             h = 3 * h + 1;
+            System.out.println("把 h 改为 " + h);
         }
         while (h >= 1) {
             //将数组变为 h 有序
             for (int i = h; i < n; i++) {
+                System.out.println("i = " + i);
                 //将 a[i] 插入到 a[i-h], a[i-2*h], a[i-3*h]... 之中
                 for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
                     exchange(a, j, j - h);
                 }
             }
+            System.out.println("while 循环时 h 为 " + h);
             h = h / 3;
+            System.out.println("h 缩减为 " + h);
+            System.out.println("=================================");
         }
     }
 }
