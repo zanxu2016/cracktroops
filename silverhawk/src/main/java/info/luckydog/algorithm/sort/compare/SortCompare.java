@@ -55,17 +55,17 @@ public class SortCompare {
     }
 
     public static void main(String[] args) {
-//        String alg1 = "Insertion";
-//        String alg2 = "Selection";
+        String alg1 = "Insertion";
+        String alg2 = "Selection";
 
-        String alg1 = "Shell";
-        String alg2 = "Insertion";
+//        String alg1 = "Shell";
+//        String alg2 = "Insertion";
 
 //        String alg1 = "Heap";
 //        String alg2 = "Merge";
 //        String alg1 = "Quick";
-        int n = 1000;
-        int t = 1000;
+        int n = 100;
+        int t = 100;
         double t1 = timeRandomInput(alg1, n, t);
         double t2 = timeRandomInput(alg2, n, t);
         System.out.printf("For %d random Doubles\n  %s is", n, alg1);

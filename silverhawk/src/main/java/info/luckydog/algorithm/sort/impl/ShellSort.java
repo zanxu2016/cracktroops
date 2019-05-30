@@ -1,6 +1,7 @@
 package info.luckydog.algorithm.sort.impl;
 
 import info.luckydog.algorithm.sort.AbstractSort;
+import info.luckydog.algorithm.sort.compare.StdDraw;
 
 /**
  * 希尔排序
@@ -43,6 +44,9 @@ public class ShellSort extends AbstractSort {
                 for (int j = i; j >= h && less(a[j], a[j - h]); j -= h) {
                     exchange(a, j, j - h);
                 }
+
+                showAnimation(a);
+                StdDraw.pause(1000);
             }
             System.out.println("while 循环时 h 为 " + h);
             h = h / 3;

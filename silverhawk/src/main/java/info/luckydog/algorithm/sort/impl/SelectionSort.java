@@ -1,6 +1,7 @@
 package info.luckydog.algorithm.sort.impl;
 
 import info.luckydog.algorithm.sort.AbstractSort;
+import info.luckydog.algorithm.sort.compare.StdDraw;
 
 /**
  * 选择排序
@@ -32,6 +33,9 @@ public class SelectionSort extends AbstractSort {
                 }
             }
             exchange(a, i, min);// 交换
+
+            showAnimation(a);
+            StdDraw.pause(1000);
         }
     }
 }

@@ -1,5 +1,7 @@
 package info.luckydog.algorithm.sort;
 
+import info.luckydog.algorithm.sort.compare.StdDraw;
+
 /**
  * 排序算法抽象类
  * 实现比较、交换、展示、排序结果等方法
@@ -15,6 +17,7 @@ public abstract class AbstractSort implements Sort {
     private int compareCount;//比较次数
 
     public void sort(Comparable[] a) {
+        //各种排序算法自行实现
     }
 
     public boolean less(Comparable v, Comparable w) {
@@ -46,6 +49,22 @@ public abstract class AbstractSort implements Sort {
             }
         }
         return true;
+    }
+
+    //显示动画
+    public void showAnimation(Comparable[] a) {
+        StdDraw.setXscale(0.0, a.length);
+        StdDraw.setYscale(0.0, a.length);
+        StdDraw.setPenRadius(0.005);
+        StdDraw.pause(100);
+        StdDraw.clear(StdDraw.GRAY);
+        StdDraw.setPenColor(StdDraw.BLACK);
+        if (isSorted(a)) {
+            StdDraw.setPenColor(StdDraw.RED);
+        }
+        for (int i = 0; i < a.length; i++) {
+            StdDraw.line(i * 1.0, 0.0, i * 1.0, Double.valueOf(String.valueOf(a[i])) * 1.0);
+        }
     }
 
     public int getExchangeCount() {

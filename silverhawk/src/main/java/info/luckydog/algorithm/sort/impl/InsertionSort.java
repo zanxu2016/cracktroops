@@ -1,6 +1,7 @@
 package info.luckydog.algorithm.sort.impl;
 
 import info.luckydog.algorithm.sort.AbstractSort;
+import info.luckydog.algorithm.sort.compare.StdDraw;
 
 /**
  * 插入排序
@@ -35,6 +36,8 @@ public class InsertionSort extends AbstractSort {
             for (int j = i; j > 0 && less(a[j], a[j - 1]); j--) {
                 exchange(a, j, j - 1);
             }
+            showAnimation(a);
+            StdDraw.pause(1000);
         }
     }
 }
