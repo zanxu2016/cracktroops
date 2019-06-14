@@ -2,6 +2,7 @@ package info.luckydog.algorithm.sort;
 
 import info.luckydog.algorithm.sort.compare.StdDraw;
 import info.luckydog.algorithm.sort.impl.InsertionSort;
+import info.luckydog.algorithm.sort.impl.MergeSort;
 import info.luckydog.algorithm.sort.impl.SelectionSort;
 import info.luckydog.algorithm.sort.impl.ShellSort;
 import org.junit.Test;
@@ -54,6 +55,19 @@ public class SortClient {
     @Test
     public void testShellSortAnimation() {
         sortDecorator = new SortDecorator(new ShellSort());
+        sortDecorator.sort(b);
+        StdDraw.pause(5000);
+    }
+
+    @Test
+    public void testMergeSort() {
+        sortDecorator = new SortDecorator(new MergeSort());
+        sortDecorator.sort(a);
+    }
+
+    @Test
+    public void testMergeSortAnimation() {
+        sortDecorator = new SortDecorator(new MergeSort());
         sortDecorator.sort(b);
         StdDraw.pause(5000);
     }
