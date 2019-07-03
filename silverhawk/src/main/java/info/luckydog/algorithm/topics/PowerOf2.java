@@ -15,6 +15,9 @@ public class PowerOf2 {
     public void powerOf2Test() {
         System.out.println(isPowerOf2(100L));
         System.out.println(isPowerOf2(128L));
+
+        System.out.println(isPowerOfTwo(100L));
+        System.out.println(isPowerOfTwo(128L));
     }
 
     /**
@@ -27,5 +30,16 @@ public class PowerOf2 {
      */
     private boolean isPowerOf2(long n) {
         return (n & (n - 1)) == 0;
+    }
+
+    /**
+     * 16   0001 0000
+     * -16  1111 0000
+     * (16 & -16) = 16
+     * @param n
+     * @return
+     */
+    private boolean isPowerOfTwo(long n) {
+        return (n & -n) == n;
     }
 }
