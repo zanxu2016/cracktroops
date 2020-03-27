@@ -17,12 +17,12 @@ public class CallableDemo {
     @Test
     public void baseUse() {
         Callable<Integer> callable = () -> {
-            Thread.sleep(1000);
+            Thread.sleep(5000);
             System.out.println("callable.call()");
             return 1 + 1;
         };
 
-        FutureTask ft = new FutureTask(callable);
+        FutureTask<Integer> ft = new FutureTask<>(callable);
         new Thread(ft).start();
 
         try {

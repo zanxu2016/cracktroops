@@ -1,4 +1,4 @@
-package info.luckydog.javacore.object_interface;
+package info.luckydog.javacore.object;
 
 /**
  * Shape
