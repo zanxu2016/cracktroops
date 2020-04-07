@@ -1,8 +1,6 @@
 package info.luckydog.javacore.object;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 讨论 == equals hashCode 之间的关系和区别
@@ -28,7 +26,7 @@ public class EqualsDemo {
     public static void main(String[] args) {
         Person a = new Person("a", 20, 'F');
         Person b = new Person("a", 20, 'F');
-        Person c = new Person("c", 20, 'F');
+        Person c = new Person("a", 20, 'M');
 
         System.out.println("a==b " + (a == b));
         System.out.println("a equals b " + a.equals(b));
@@ -44,6 +42,18 @@ public class EqualsDemo {
         set.add(b);
         set.add(c);
         set.forEach(System.out::println);
+        System.out.println("============================");
+
+        Map<Person, Integer> map = new HashMap<>();
+        map.put(a, 1);
+
+        Integer bRes = map.get(b);
+        System.out.println("bRes = " + bRes);
+        Integer cRes = map.get(c);
+        System.out.println("cRes = " + cRes);
+
+        System.out.println((16 - 1) & 30);
+
     }
 }
 
@@ -83,25 +93,25 @@ class Person {
     }
 
     // equals和hashCode的覆写逻辑一致，equals为true时，hashCode一定相同
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return age == person.age &&
-                Objects.equals(name, person.name) &&
-                Objects.equals(gender, person.gender);
-    }
-
-    // hashCode不被覆写，或，覆写逻辑与equals不一致，则equals为true的两个对象，hashCode未必相同
 //    @Override
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (o == null || getClass() != o.getClass()) return false;
 //        Person person = (Person) o;
 //        return age == person.age &&
-//                Objects.equals(name, person.name);
+//                Objects.equals(name, person.name) &&
+//                Objects.equals(gender, person.gender);
 //    }
+
+    // hashCode不被覆写，或，覆写逻辑与equals不一致，则equals为true的两个对象，hashCode未必相同
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return age == person.age &&
+                Objects.equals(name, person.name);
+    }
 
 
     @Override
