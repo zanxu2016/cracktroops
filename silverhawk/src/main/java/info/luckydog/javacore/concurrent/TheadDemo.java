@@ -3,7 +3,7 @@ package info.luckydog.javacore.concurrent;
 import org.junit.Test;
 
 import java.util.Map;
-import java.util.stream.Stream;
+import java.util.concurrent.TimeUnit;
 
 /**
  * TheadDemo
@@ -89,6 +89,48 @@ public class TheadDemo {
             for (StackTraceElement element : elements) {
                 System.out.println("stack trace element: " + element);
             }
+        }
+    }
+
+    @Test
+    public void join() throws InterruptedException {
+        Thread t1 = new Thread(() -> {
+            System.out.println(Thread.currentThread().getName() + " running...");
+            for (int i = 0; i < 5; i++) {
+                System.out.println(Thread.currentThread().getName() + " " + i);
+                sleep(1);
+            }
+            System.out.println(Thread.currentThread().getName() + " done...");
+        }, "t1");
+        Thread t2 = new Thread(() -> {
+            try {
+                System.out.println(Thread.currentThread().getName() + " running...");
+                // t1线程插入t2线程
+                t1.join();
+                for (int i = 0; i < 5; i++) {
+                    System.out.println(Thread.currentThread().getName() + " " + i);
+                    sleep(1);
+                }
+                System.out.println(Thread.currentThread().getName() + " done...");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }, "t2");
+
+        // 启动线程
+        t2.start();
+        t1.start();
+        System.out.println(Thread.currentThread().getName() + " waiting for sub thread over");
+        // t2线程插入主线程
+        t2.join();
+        System.out.println(Thread.currentThread().getName() + " thread over...");
+    }
+
+    private void sleep(long timeout) {
+        try {
+            TimeUnit.SECONDS.sleep(timeout);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
