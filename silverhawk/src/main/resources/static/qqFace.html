@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript">
+        let currentFaceIndex = -1;
+
+        // 更换表情
+        function changeFace() {
+            document.getElementById("showFace").src = "./gif/" + genNextIndex() + ".gif";
+        }
+
+        // 生成下一个索引
+        function genNextIndex() {
+            const faceMin = 1;
+            const faceMax = 75;
+            let randomNum = 0;
+            while (randomNum === currentFaceIndex) {
+                randomNum = RandomClosed(faceMin, faceMax);
+                if (randomNum > faceMax) {
+                    console.info("out of bounds");
+                }
+                if (randomNum === faceMax) {
+                    console.info("reach the top");
+                }
+                if (randomNum === faceMin) {
+                    console.info("reach the bottom");
+                }
+            }
+            console.info(randomNum);
+            return randomNum;
+        }
+
+        // 随机生成范围内数字，闭区间
+        function RandomClosed(min, max) {
+            return Math.round(Math.random() * (max - min)) + min;
+        }
+
+        // 随机生成范围内数字，右闭区间
+        function RandomRightClosed(min, max) {
+            return Math.ceil(Math.random() * (max - min)) + min;
+        }
+
+        // 随机生成范围内数字，右闭区间
+        function RandomRightClosed2(min, max) {
+            return Math.round(Math.random() * (max - min)) === 0 ? (min + 1) : Math.round(Math.random() * (max - min)) + min;
+        }
+
+        // 随机生成范围内数字，左闭区间
+        function RandomLeftClosed(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        // 随机生成范围内数字，左闭区间
+        function RandomLeftClosed2(min, max) {
+            return Math.round(Math.random() * (max - min)) === max ? (max - 1) : Math.round(Math.random() * (max - min)) + min;
+        }
+
+        // 随机生成范围内数字，开区间
+        function RandomOpen(min, max) {
+            return Math.floor(Math.random() * (max - min)) === min ? (min + 1) : Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        // 随机生成范围内数字，开区间
+        function RandomOpen2(min, max) {
+            return Math.floor(Math.random() * ((max - 1) - (min + 1))) + (min + 1);// 相当于 min+1 ≤ r ≤ max - 1
+        }
+    </script>
+</head>
+<body>
+<table border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+        <td><img src="./gif/1.gif"></td>
+        <td><img src="./gif/2.gif"></td>
+        <td><img src="./gif/3.gif"></td>
+        <td><img src="./gif/4.gif"></td>
+        <td><img src="./gif/5.gif"></td>
+        <td><img src="./gif/6.gif"></td>
+        <td><img src="./gif/7.gif"></td>
+        <td><img src="./gif/8.gif"></td>
+        <td><img src="./gif/9.gif"></td>
+        <td><img src="./gif/10.gif"></td>
+    </tr>
+    <tr>
+        <td><img src="./gif/11.gif"></td>
+        <td><img src="./gif/12.gif"></td>
+        <td><img src="./gif/13.gif"></td>
+        <td><img src="./gif/14.gif"></td>
+        <td><img src="./gif/15.gif"></td>
+        <td><img src="./gif/16.gif"></td>
+        <td><img src="./gif/17.gif"></td>
+        <td><img src="./gif/18.gif"></td>
+        <td><img src="./gif/19.gif"></td>
+        <td><img src="./gif/20.gif"></td>
+    </tr>
+    <tr>
+        <td><img src="./gif/21.gif"></td>
+        <td><img src="./gif/22.gif"></td>
+        <td><img src="./gif/23.gif"></td>
+        <td><img src="./gif/24.gif"></td>
+        <td><img src="./gif/25.gif"></td>
+        <td><img src="./gif/26.gif"></td>
+        <td><img src="./gif/27.gif"></td>
+        <td><img src="./gif/28.gif"></td>
+        <td><img src="./gif/29.gif"></td>
+        <td><img src="./gif/30.gif"></td>
+    </tr>
+    <tr>
+        <td><img src="./gif/31.gif"></td>
+        <td><img src="./gif/32.gif"></td>
+        <td><img src="./gif/33.gif"></td>
+        <td><img src="./gif/34.gif"></td>
+        <td><img src="./gif/35.gif"></td>
+        <td><img src="./gif/36.gif"></td>
+        <td><img src="./gif/37.gif"></td>
+        <td><img src="./gif/38.gif"></td>
+        <td><img src="./gif/39.gif"></td>
+        <td><img src="./gif/40.gif"></td>
+    </tr>
+    <tr>
+        <td><img src="./gif/41.gif"></td>
+        <td><img src="./gif/42.gif"></td>
+        <td><img src="./gif/43.gif"></td>
+        <td><img src="./gif/44.gif"></td>
+        <td><img src="./gif/45.gif"></td>
+        <td><img src="./gif/46.gif"></td>
+        <td><img src="./gif/47.gif"></td>
+        <td><img src="./gif/48.gif"></td>
+        <td><img src="./gif/49.gif"></td>
+        <td><img src="./gif/50.gif"></td>
+    </tr>
+    <tr>
+        <td><img src="./gif/51.gif"></td>
+        <td><img src="./gif/52.gif"></td>
+        <td><img src="./gif/53.gif"></td>
+        <td><img src="./gif/54.gif"></td>
+        <td><img src="./gif/55.gif"></td>
+        <td><img src="./gif/56.gif"></td>
+        <td><img src="./gif/57.gif"></td>
+        <td><img src="./gif/58.gif"></td>
+        <td><img src="./gif/59.gif"></td>
+        <td><img src="./gif/60.gif"></td>
+    </tr>
+    <tr>
+        <td><img src="./gif/61.gif"></td>
+        <td><img src="./gif/62.gif"></td>
+        <td><img src="./gif/63.gif"></td>
+        <td><img src="./gif/64.gif"></td>
+        <td><img src="./gif/65.gif"></td>
+        <td><img src="./gif/66.gif"></td>
+        <td><img src="./gif/67.gif"></td>
+        <td><img src="./gif/68.gif"></td>
+        <td><img src="./gif/69.gif"></td>
+        <td><img src="./gif/70.gif"></td>
+    </tr>
+    <tr>
+        <td><img src="./gif/71.gif"></td>
+        <td><img src="./gif/72.gif"></td>
+        <td><img src="./gif/73.gif"></td>
+        <td><img src="./gif/74.gif"></td>
+        <td><img src="./gif/75.gif"></td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <button onclick="changeFace()">切换表情</button>
+</div>
+<div>
+    <img id="showFace"/>
+</div>
+</body>
+</html>

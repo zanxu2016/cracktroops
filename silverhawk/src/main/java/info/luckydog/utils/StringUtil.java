@@ -8,6 +8,8 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 public class StringUtil {
 
     @Test
@@ -34,6 +36,38 @@ public class StringUtil {
         System.out.println("before: " + ips);
         ips = distinctIps(ips);
         System.out.println("after: " + ips);
+    }
+
+    @Test
+    public void stringBufferTest() {
+        StringBuffer stringBuffer = new StringBuffer();
+        System.out.println(stringBuffer.toString().length());
+
+        System.out.println(getAddress1(null, null, null));
+    }
+
+    public static String getAddress1(String building, String cell, String room) {
+        StringBuffer sv = new StringBuffer();
+        String buildingAndCell = getBuildingAndCell(building, cell);
+        sv.append(buildingAndCell);
+        if (StringUtils.isNotEmpty(room)) {
+            sv.append(room);
+        } else {
+            sv.append("-");
+        }
+        return sv.toString();
+    }
+    public static String getBuildingAndCell(String building, String cell) {
+
+        StringBuffer sv = new StringBuffer();
+        //集中式 地址无须添加栋坐单元
+        if (isNotBlank(building)) {
+            sv.append(building + "号");
+        }
+        if (isNotBlank(cell)) {
+            sv.append(cell + "单元");
+        }
+        return sv.toString();
     }
 
     public static String distinctIps(String ips) {

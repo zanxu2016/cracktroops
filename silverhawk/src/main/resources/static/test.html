@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切换表情</title>
+    <script>
+        function changeFace() {
+            let randomNum = parseInt(Math.random() * 76);
+            console.info(randomNum);
+            document.getElementById("face").src = "./gif/" + randomNum + ".gif";
+        }
+    </script>
+</head>
+
+<body>
+
+<h2>切换表情</h2>
+
+<img id="face" src="./gif/61.gif" alt="111">
+
+<button type="button" onclick="changeFace()">切换表情</button>
+</body>
+</html>
