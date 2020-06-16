@@ -16,8 +16,8 @@ public class AgentMain {
         ClassPool cp = ClassPool.getDefault();
         CtClass cc = cp.get("info.luckydog.javacore.javassist.Hello");
         CtMethod cm = cc.getDeclaredMethod("say");
-        cm.insertBefore("{ System.out.println(\"Hello.say() start\");}");
-        cm.insertAfter("{ System.out.println(\"Hello.say() end\");}");
+        cm.insertBefore("{ System.out.println(\"before Hello.say()\");}");
+        cm.insertAfter("{ System.out.println(\"after Hello.say()\");}");
         Class c = cc.toClass();
         Hello h = (Hello) c.newInstance();
         h.say("javassist");

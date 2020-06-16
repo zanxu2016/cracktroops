@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- 不使用防盗链 -->
+    <meta name="referrer" content="never">
     <title>切换表情</title>
     <script>
         function changeFace() {
@@ -9,6 +11,92 @@
             console.info(randomNum);
             document.getElementById("face").src = "./gif/" + randomNum + ".gif";
         }
+
+        // let funDownload = function (content, filename) {
+        //     // 创建隐藏的可下载链接
+        //     let eleLink = document.createElement('a');
+        //     eleLink.download = filename;
+        //     eleLink.style.display = 'none';
+        //     // 字符内容转变成blob地址
+        //     let blob = new Blob([content]);
+        //     eleLink.href = URL.createObjectURL(blob);
+        //     // 触发点击
+        //     document.body.appendChild(eleLink);
+        //     eleLink.click();
+        //     // 然后移除
+        //     document.body.removeChild(eleLink);
+        // };
+
+        // let funDownload2 = function (domImg, filename) {
+        //     // 创建隐藏的可下载链接
+        //     let eleLink = document.createElement('a');
+        //     eleLink.download = filename;
+        //     eleLink.style.display = 'none';
+        //     // 图片转base64地址
+        //     let canvas = document.createElement('canvas');
+        //     let context = canvas.getContext('2d');
+        //     let width = domImg.naturalWidth;
+        //     let height = domImg.naturalHeight;
+        //     context.drawImage(domImg, 0, 0);
+        //     // 如果是PNG图片，则canvas.toDataURL('image/png')
+        //     eleLink.href = canvas.toDataURL('image/jpeg');
+        //     // 触发点击
+        //     document.body.appendChild(eleLink);
+        //     eleLink.click();
+        //     // 然后移除
+        //     document.body.removeChild(eleLink);
+        // };
+
+        // function convertImgToBase64(url, callback, outputFormat) {
+        //     let canvas = document.createElement('CANVAS'),
+        //         ctx = canvas.getContext('2d'),
+        //         img = new Image;
+        //     img.crossOrigin = 'Anonymous';
+        //     img.onload = function () {
+        //         canvas.height = img.height;
+        //         canvas.width = img.width;
+        //         ctx.drawImage(img, 0, 0);
+        //         let dataURL = canvas.toDataURL(outputFormat || 'image/png');
+        //         callback.call(this, dataURL);
+        //         canvas = null;
+        //     };
+        //     img.src = url;
+        // }
+
+        const qrCodeUrl = "http://mmbiz.qpic.cn/mmbiz_jpg/WyoiaWQCBhBV8Dh0rl0MqYD7SSKXHSW2nWiazVBqV1HJMbpVRpDNkQHGUIg259IaErrjXMpk3sYHesWlEI7fKojQ/0";//这是站内的一张图片资源，采用的相对路径
+
+        // convertImgToBase64(url, function (base64Img) {
+        //     //转化后的base64
+        //     alert(base64Img);
+        // });
+
+        let oImg = document.getElementById("target");
+        const testUrl = "http://dl2.iteye.com/upload/attachment/0119/9050/985bb28a-0ce6-36df-83ac-0a6781c9691a.png";
+
+        function convertImgToBase64(url, callback, outputFormat) {
+            let canvas = document.createElement('canvas'),
+                ctx = canvas.getContext('2d'),
+                img = new Image;
+            img.crossOrigin = 'Anonymous';//它开启了本地的跨域允许。当然服务器存储那边也要开放相应的权限才行，如果是设置了防盗链的图片在服务端就没有相应的权限的话你本地端开启了权限也是没有用的
+            img.onload = function () {
+                canvas.height = img.height;
+                canvas.width = img.width;
+                ctx.drawImage(img, 0, 0);
+                let dataURL = canvas.toDataURL(outputFormat || 'image/png');//没权限的跨域图片在使用canvas.toDataURL()数据导出时会报错
+                alert(dataURL);
+                callback.call(this, dataURL);
+                canvas = null;
+            };
+            img.src = url;
+        }
+
+        convertImgToBase64(qrCodeUrl, function (base64Img) {
+            console.log(base64Img);
+            console.log(typeof oImg);
+            // oImg.src = base64Img;
+        });
+
+
     </script>
 </head>
 
@@ -19,5 +107,21 @@
 <img id="face" src="./gif/61.gif" alt="111">
 
 <button type="button" onclick="changeFace()">切换表情</button>
+
+<div>
+    <!-- 下载图片，但chrome上并未下载，而是在新标签下打开图片 -->
+    <img src="http://mmbiz.qpic.cn/mmbiz_jpg/WyoiaWQCBhBV8Dh0rl0MqYD7SSKXHSW2nWiazVBqV1HJMbpVRpDNkQHGUIg259IaErrjXMpk3sYHesWlEI7fKojQ/0"
+         width="512" height="512" alt="微信公众号二维码"/>
+    <a href="http://mmbiz.qpic.cn/mmbiz_jpg/WyoiaWQCBhBV8Dh0rl0MqYD7SSKXHSW2nWiazVBqV1HJMbpVRpDNkQHGUIg259IaErrjXMpk3sYHesWlEI7fKojQ/0"
+       download="we-chat-qr-code.jpg">微信公众号二维码</a>
+
+    <div>
+        <img id="target" src="" alt=""/>
+    </div>
+
+    <div>
+
+    </div>
+</div>
 </body>
 </html>
